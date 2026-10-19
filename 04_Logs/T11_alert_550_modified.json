@@ -1,0 +1,201 @@
+{
+  "_index": "wazuh-alerts-4.x-2026.10.19",
+  "_id": "UX_jVKEBBcEsBZMZNi5F",
+  "_score": null,
+  "_source": {
+    "syscheck": {
+      "size_before": "31",
+      "uname_after": "Administrators",
+      "mtime_after": "2026-10-19T15:58:55",
+      "size_after": "82",
+      "md5_before": "c44b78358b834b1fa4760c96f5fd4ac9",
+      "diff": "---\n> Revision: budget increased, new target date added\n",
+      "win_perm_after": [
+        {
+          "allowed": [
+            "DELETE",
+            "READ_CONTROL",
+            "WRITE_DAC",
+            "WRITE_OWNER",
+            "SYNCHRONIZE",
+            "READ_DATA",
+            "WRITE_DATA",
+            "APPEND_DATA",
+            "READ_EA",
+            "WRITE_EA",
+            "EXECUTE",
+            "READ_ATTRIBUTES",
+            "WRITE_ATTRIBUTES",
+            [
+              "DELETE",
+              "READ_CONTROL",
+              "WRITE_DAC",
+              "WRITE_OWNER",
+              "SYNCHRONIZE",
+              "READ_DATA",
+              "WRITE_DATA",
+              "APPEND_DATA",
+              "READ_EA",
+              "WRITE_EA",
+              "EXECUTE",
+              "READ_ATTRIBUTES",
+              "WRITE_ATTRIBUTES"
+            ],
+            [
+              "DELETE",
+              "READ_CONTROL",
+              "WRITE_DAC",
+              "WRITE_OWNER",
+              "SYNCHRONIZE",
+              "READ_DATA",
+              "WRITE_DATA",
+              "APPEND_DATA",
+              "READ_EA",
+              "WRITE_EA",
+              "EXECUTE",
+              "READ_ATTRIBUTES",
+              "WRITE_ATTRIBUTES"
+            ]
+          ],
+          "name": "SYSTEM"
+        },
+        {
+          "allowed": [
+            "DELETE",
+            "READ_CONTROL",
+            "WRITE_DAC",
+            "WRITE_OWNER",
+            "SYNCHRONIZE",
+            "READ_DATA",
+            "WRITE_DATA",
+            "APPEND_DATA",
+            "READ_EA",
+            "WRITE_EA",
+            "EXECUTE",
+            "READ_ATTRIBUTES",
+            "WRITE_ATTRIBUTES"
+          ],
+          "name": "Administrators"
+        },
+        {
+          "allowed": [
+            "DELETE",
+            "READ_CONTROL",
+            "WRITE_DAC",
+            "WRITE_OWNER",
+            "SYNCHRONIZE",
+            "READ_DATA",
+            "WRITE_DATA",
+            "APPEND_DATA",
+            "READ_EA",
+            "WRITE_EA",
+            "EXECUTE",
+            "READ_ATTRIBUTES",
+            "WRITE_ATTRIBUTES"
+          ],
+          "name": "DynastyX-koko"
+        }
+      ],
+      "sha256_before": "482bc551afe2db96869b81591ba670607a158636d4211a8e0b8dcd34de6c1a5d",
+      "mtime_before": "2026-10-19T15:58:10",
+      "mode": "realtime",
+      "path": "c:\\users\\dynastyx-koko\\sensitivefiles\\secret_plan.txt",
+      "sha1_after": "0d455b03ec6c1a7aa3cade58cf747613ab79a51a",
+      "changed_attributes": [
+        "size",
+        "mtime",
+        "md5",
+        "sha1",
+        "sha256"
+      ],
+      "attrs_after": [
+        "ARCHIVE"
+      ],
+      "uid_after": "S-1-5-32-544",
+      "event": "modified",
+      "md5_after": "6098bc161a45d5886d2815ab0e218861",
+      "sha1_before": "af9685f7be653653b608b4367a8a418c8fc81330",
+      "sha256_after": "eadb58eba2e7ff70a59fd9521cb523222b5f614bc7c6bd834a2bbfb99a13085c"
+    },
+    "input": {
+      "type": "log"
+    },
+    "agent": {
+      "ip": "192.168.119.1",
+      "name": "Windows-SOC-Lab",
+      "id": "001"
+    },
+    "manager": {
+      "name": "icdfa-server"
+    },
+    "rule": {
+      "mail": false,
+      "level": 7,
+      "pci_dss": [
+        "11.5"
+      ],
+      "hipaa": [
+        "164.312.c.1",
+        "164.312.c.2"
+      ],
+      "tsc": [
+        "PI1.4",
+        "PI1.5",
+        "CC6.1",
+        "CC6.8",
+        "CC7.2",
+        "CC7.3"
+      ],
+      "description": "Integrity checksum changed.",
+      "groups": [
+        "ossec",
+        "syscheck",
+        "syscheck_entry_modified",
+        "syscheck_file"
+      ],
+      "nist_800_53": [
+        "SI.7"
+      ],
+      "gdpr": [
+        "II_5.1.f"
+      ],
+      "firedtimes": 2,
+      "mitre": {
+        "technique": [
+          "Stored Data Manipulation"
+        ],
+        "id": [
+          "T1565.001"
+        ],
+        "tactic": [
+          "Impact"
+        ]
+      },
+      "id": "550",
+      "gpg13": [
+        "4.11"
+      ]
+    },
+    "location": "syscheck",
+    "decoder": {
+      "name": "syscheck_integrity_changed"
+    },
+    "id": "1792425535.2258467",
+    "full_log": "File 'c:\\users\\dynastyx-koko\\sensitivefiles\\secret_plan.txt' modified\nMode: realtime\nChanged attributes: size,mtime,md5,sha1,sha256\nSize changed from '31' to '82'\nOld modification time was: '1792425490', now it is '1792425535'\nOld md5sum was: 'c44b78358b834b1fa4760c96f5fd4ac9'\nNew md5sum is : '6098bc161a45d5886d2815ab0e218861'\nOld sha1sum was: 'af9685f7be653653b608b4367a8a418c8fc81330'\nNew sha1sum is : '0d455b03ec6c1a7aa3cade58cf747613ab79a51a'\nOld sha256sum was: '482bc551afe2db96869b81591ba670607a158636d4211a8e0b8dcd34de6c1a5d'\nNew sha256sum is : 'eadb58eba2e7ff70a59fd9521cb523222b5f614bc7c6bd834a2bbfb99a13085c'\n",
+    "timestamp": "2026-10-19T15:58:55.443+0000"
+  },
+  "fields": {
+    "syscheck.mtime_after": [
+      "2026-10-19T15:58:55.000Z"
+    ],
+    "syscheck.mtime_before": [
+      "2026-10-19T15:58:10.000Z"
+    ],
+    "timestamp": [
+      "2026-10-19T15:58:55.443Z"
+    ]
+  },
+  "sort": [
+    1792425535443
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "_index": "wazuh-alerts-4.x-2026.10.19",
+  "_id": "UH_iVKEBBcEsBZMZhi6U",
+  "_score": null,
+  "_source": {
+    "syscheck": {
+      "mode": "realtime",
+      "path": "c:\\users\\dynastyx-koko\\sensitivefiles\\secret_plan.txt",
+      "sha1_after": "af9685f7be653653b608b4367a8a418c8fc81330",
+      "uname_after": "Administrators",
+      "mtime_after": "2026-10-19T15:58:10",
+      "attrs_after": [
+        "ARCHIVE"
+      ],
+      "size_after": "31",
+      "uid_after": "S-1-5-32-544",
+      "win_perm_after": [
+        {
+          "allowed": [
+            "DELETE",
+            "READ_CONTROL",
+            "WRITE_DAC",
+            "WRITE_OWNER",
+            "SYNCHRONIZE",
+            "READ_DATA",
+            "WRITE_DATA",
+            "APPEND_DATA",
+            "READ_EA",
+            "WRITE_EA",
+            "EXECUTE",
+            "READ_ATTRIBUTES",
+            "WRITE_ATTRIBUTES",
+            [
+              "DELETE",
+              "READ_CONTROL",
+              "WRITE_DAC",
+              "WRITE_OWNER",
+              "SYNCHRONIZE",
+              "READ_DATA",
+              "WRITE_DATA",
+              "APPEND_DATA",
+              "READ_EA",
+              "WRITE_EA",
+              "EXECUTE",
+              "READ_ATTRIBUTES",
+              "WRITE_ATTRIBUTES"
+            ],
+            [
+              "DELETE",
+              "READ_CONTROL",
+              "WRITE_DAC",
+              "WRITE_OWNER",
+              "SYNCHRONIZE",
+              "READ_DATA",
+              "WRITE_DATA",
+              "APPEND_DATA",
+              "READ_EA",
+              "WRITE_EA",
+              "EXECUTE",
+              "READ_ATTRIBUTES",
+              "WRITE_ATTRIBUTES"
+            ]
+          ],
+          "name": "SYSTEM"
+        },
+        {
+          "allowed": [
+            "DELETE",
+            "READ_CONTROL",
+            "WRITE_DAC",
+            "WRITE_OWNER",
+            "SYNCHRONIZE",
+            "READ_DATA",
+            "WRITE_DATA",
+            "APPEND_DATA",
+            "READ_EA",
+            "WRITE_EA",
+            "EXECUTE",
+            "READ_ATTRIBUTES",
+            "WRITE_ATTRIBUTES"
+          ],
+          "name": "Administrators"
+        },
+        {
+          "allowed": [
+            "DELETE",
+            "READ_CONTROL",
+            "WRITE_DAC",
+            "WRITE_OWNER",
+            "SYNCHRONIZE",
+            "READ_DATA",
+            "WRITE_DATA",
+            "APPEND_DATA",
+            "READ_EA",
+            "WRITE_EA",
+            "EXECUTE",
+            "READ_ATTRIBUTES",
+            "WRITE_ATTRIBUTES"
+          ],
+          "name": "DynastyX-koko"
+        }
+      ],
+      "event": "added",
+      "md5_after": "c44b78358b834b1fa4760c96f5fd4ac9",
+      "sha256_after": "482bc551afe2db96869b81591ba670607a158636d4211a8e0b8dcd34de6c1a5d"
+    },
+    "input": {
+      "type": "log"
+    },
+    "agent": {
+      "ip": "192.168.119.1",
+      "name": "Windows-SOC-Lab",
+      "id": "001"
+    },
+    "manager": {
+      "name": "icdfa-server"
+    },
+    "rule": {
+      "firedtimes": 2,
+      "mail": false,
+      "level": 5,
+      "pci_dss": [
+        "11.5"
+      ],
+      "hipaa": [
+        "164.312.c.1",
+        "164.312.c.2"
+      ],
+      "tsc": [
+        "PI1.4",
+        "PI1.5",
+        "CC6.1",
+        "CC6.8",
+        "CC7.2",
+        "CC7.3"
+      ],
+      "description": "File added to the system.",
+      "groups": [
+        "ossec",
+        "syscheck",
+        "syscheck_entry_added",
+        "syscheck_file"
+      ],
+      "id": "554",
+      "nist_800_53": [
+        "SI.7"
+      ],
+      "gpg13": [
+        "4.11"
+      ],
+      "gdpr": [
+        "II_5.1.f"
+      ]
+    },
+    "location": "syscheck",
+    "decoder": {
+      "name": "syscheck_new_entry"
+    },
+    "id": "1792425490.2257220",
+    "full_log": "File 'c:\\users\\dynastyx-koko\\sensitivefiles\\secret_plan.txt' added\nMode: realtime\n",
+    "timestamp": "2026-10-19T15:58:10.341+0000"
+  },
+  "fields": {
+    "syscheck.mtime_after": [
+      "2026-10-19T15:58:10.000Z"
+    ],
+    "timestamp": [
+      "2026-10-19T15:58:10.341Z"
+    ]
+  },
+  "sort": [
+    1792425490341
+  ]
+}

@@ -1,0 +1,112 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+                                                                                                                        PS C:\WINDOWS\system32> ping 192.168.152.131 -n 3                                                                                                                                                                                               Pinging 192.168.152.131 with 32 bytes of data:                                                                          Request timed out.                                                                                                      Request timed out.                                                                                                      Request timed out.                                                                                                                                                                                                                              Ping statistics for 192.168.152.131:                                                                                        Packets: Sent = 3, Received = 0, Lost = 3 (100% loss),                                                              PS C:\WINDOWS\system32> Test-NetConnection 192.168.152.131 -Port 443                                                    WARNING: TCP connect to (192.168.152.131 : 443) failed                                                                  WARNING: Ping to 192.168.152.131 failed with status: TimedOut                                                                                                                                                                                                                                                                                                           ComputerName           : 192.168.152.131                                                                                RemoteAddress          : 192.168.152.131                                                                                RemotePort             : 443                                                                                            InterfaceAlias         : Wi-Fi                                                                                          SourceAddress          : 172.20.10.3                                                                                    PingSucceeded          : False                                                                                          PingReplyDetails (RTT) : 0 ms
+TcpTestSucceeded       : False
+
+
+
+PS C:\WINDOWS\system32> Test-NetConnection 192.168.152.131 -Port 22
+WARNING: TCP connect to (192.168.152.131 : 22) failed
+WARNING: Ping to 192.168.152.131 failed with status: TimedOut
+
+
+ComputerName           : 192.168.152.131
+RemoteAddress          : 192.168.152.131
+RemotePort             : 22
+InterfaceAlias         : Wi-Fi
+SourceAddress          : 172.20.10.3
+PingSucceeded          : False
+PingReplyDetails (RTT) : 0 ms
+TcpTestSucceeded       : False
+
+
+
+PS C:\WINDOWS\system32> Get-NetAdapter | Where-Object { $_.Name -like "*VMnet*" -or $_.InterfaceDescription -like "*VMware*" } | Format-Table Name, Status, InterfaceDescription
+
+Name                          Status      InterfaceDescription
+----                          ------      --------------------
+VMware Network Adapter VMnet1 Up          VMware Virtual Ethernet Adapter for VMnet1
+VMware Network Adapter VMnet8 Not Present VMware Virtual Ethernet Adapter for VMnet8
+
+
+PS C:\WINDOWS\system32> Get-NetIPAddress -AddressFamily IPv4 | Where-Object { $_.IPAddress -like "192.168.152.*" } | Format-Table InterfaceAlias, IPAddress
+PS C:\WINDOWS\system32> Enable-NetAdapter -Name "VMware Network Adapter VMnet8" -Confirm:$false
+PS C:\WINDOWS\system32> Get-NetConnectionProfile
+
+
+Name                     : iPhone xll
+InterfaceAlias           : Wi-Fi
+InterfaceIndex           : 15
+NetworkCategory          : Public
+DomainAuthenticationKind : None
+IPv4Connectivity         : Internet
+IPv6Connectivity         : NoTraffic
+
+
+
+PS C:\WINDOWS\system32> Get-NetFirewallProfile | Format-Table Name, Enabled
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

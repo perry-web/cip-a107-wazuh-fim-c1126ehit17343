@@ -1,0 +1,38 @@
+# Rebuilt from console text pasted by the analyst into the working chat (not a file copy). Only change: markers in [square brackets].
+# Times: Windows host clock is UTC-7; Wazuh manager and VM use UTC.
+# Windows host, Administrator PowerShell, 2026-10-19 (host clock UTC-7)
+
+PS C:\WINDOWS\system32> New-Item -ItemType Directory -Force -Path "C:\Users\DynastyX-koko\SensitiveFiles"
+
+    Directory: C:\Users\DynastyX-koko
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        10/19/2026   8:39 AM                SensitiveFiles
+
+PS C:\WINDOWS\system32> $conf = "C:\Program Files (x86)\ossec-agent\ossec.conf"
+PS C:\WINDOWS\system32> Copy-Item $conf "$conf.bak"
+PS C:\WINDOWS\system32> Get-ChildItem "C:\Program Files (x86)\ossec-agent\ossec.conf*"
+
+    Directory: C:\Program Files (x86)\ossec-agent
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        10/19/2026   8:32 AM           9860 ossec.conf
+-a----        10/19/2026   8:32 AM           9860 ossec.conf.bak
+
+PS C:\WINDOWS\system32> notepad "C:\Program Files (x86)\ossec-agent\ossec.conf"
+# (line added inside <syscheck>, file saved)
+PS C:\WINDOWS\system32> Select-String -Path "C:\Program Files (x86)\ossec-agent\ossec.conf" -Pattern "SensitiveFiles"
+
+C:\Program Files (x86)\ossec-agent\ossec.conf:156:    <directories realtime="yes" check_all="yes" report_changes="yes">C:\Users\DynastyX-koko\SensitiveFiles</directories>
+
+PS C:\WINDOWS\system32> Restart-Service WazuhSvc
+PS C:\WINDOWS\system32> Start-Sleep -Seconds 20
+PS C:\WINDOWS\system32> Select-String -Path "C:\Program Files (x86)\ossec-agent\ossec.log" -Pattern "sensitivefiles|Real-time|realtime|ERROR" | Select-Object -Last 8
+
+ossec.log:38:2026/10/19 08:34:16 wazuh-agent: INFO: (6003): Monitoring path: 'c:\programdata\microsoft\windows\start menu\programs\startup', with options 'size | permissions | owner | group | mtime | inode | hash_md5 | hash_sha1 | hash_sha256 | attributes | realtime'.
+ossec.log:130:2026/10/19 08:34:24 wazuh-agent: INFO: (6003): Monitoring path: 'c:\programdata\microsoft\windows\start menu\programs\startup', with options 'size | permissions | owner | group | mtime | inode | hash_md5 | hash_sha1 | hash_sha256 | attributes | realtime'.
+ossec.log:180:2026/10/19 08:34:55 wazuh-agent: INFO: (6012): Real-time file integrity monitoring started.
+ossec.log:224:2026/10/19 08:45:43 wazuh-agent: INFO: (6003): Monitoring path: 'c:\programdata\microsoft\windows\start menu\programs\startup', with options 'size | permissions | owner | group | mtime | inode | hash_md5 | hash_sha1 | hash_sha256 | attributes | realtime'.
+ossec.log:225:2026/10/19 08:45:43 wazuh-agent: INFO: (6003): Monitoring path: 'c:\users\dynastyx-koko\sensitivefiles', with options 'size | permissions | owner | group | mtime | inode | hash_md5 | hash_sha1 | hash_sha256 | attributes | report_changes | realtime'.

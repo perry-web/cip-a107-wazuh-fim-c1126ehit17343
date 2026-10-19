@@ -1,0 +1,9 @@
+# Rebuilt from console text pasted by the analyst into the working chat (not a file copy). Only change: markers in [square brackets].
+# Times: Windows host clock is UTC-7; Wazuh manager and VM use UTC.
+icdfa-server@icdfa-server:~$ sudo /var/ossec/bin/agent_control -l
+
+Wazuh agent_control. List of available agents:
+   ID: 000, Name: icdfa-server (server), IP: 127.0.0.1, Active/Local
+   ID: 001, Name: Windows-SOC-Lab, IP: any, Active
+
+List of agentless devices:

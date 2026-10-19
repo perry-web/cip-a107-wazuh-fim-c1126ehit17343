@@ -1,0 +1,84 @@
+PS C:\WINDOWS\system32> $dir = "C:\Users\DynastyX-koko\SensitiveFiles"
+PS C:\WINDOWS\system32> $f   = "$dir\secret_plan.txt"
+PS C:\WINDOWS\system32> $log = "$env:USERPROFILE\Documents\Lab05_FIM_events.txt"
+PS C:\WINDOWS\system32>
+PS C:\WINDOWS\system32> function Mark($step) {
+>>   $n = Get-Date
+>>   "{0} | local {1} | UTC {2}" -f $step, $n.ToString("yyyy-MM-dd HH:mm:ss"), $n.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss") | Tee-Object -FilePath $log -Append
+>> }
+PS C:\WINDOWS\system32> function Show-Hash {
+>>   "   SHA256={0}  size={1} bytes" -f (Get-FileHash $f -Algorithm SHA256).Hash, (Get-Item $f).Length | Tee-Object -FilePath $log -Append
+>> }
+PS C:\WINDOWS\system32>
+PS C:\WINDOWS\system32> Mark "1 CREATE"
+out-file : Could not find file 'C:\Users\DynastyX-koko\Documents\Lab05_FIM_events.txt'.
+At line:3 char:3
++   "{0} | local {1} | UTC {2}" -f $step, $n.ToString("yyyy-MM-dd HH:mm ...
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [out-file], FileNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+PS C:\WINDOWS\system32> Set-Content -Path $f -Value "CONFIDENTIAL: Project plan v1"
+PS C:\WINDOWS\system32> Show-Hash
+out-file : Could not find file 'C:\Users\DynastyX-koko\Documents\Lab05_FIM_events.txt'.
+At line:2 char:3
++   "   SHA256={0}  size={1} bytes" -f (Get-FileHash $f -Algorithm SHA2 ...
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [out-file], FileNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+PS C:\WINDOWS\system32> Start-Sleep -Seconds 45
+PS C:\WINDOWS\system32>
+PS C:\WINDOWS\system32> Mark "2 MODIFY"
+out-file : Could not find file 'C:\Users\DynastyX-koko\Documents\Lab05_FIM_events.txt'.
+At line:3 char:3
++   "{0} | local {1} | UTC {2}" -f $step, $n.ToString("yyyy-MM-dd HH:mm ...
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [out-file], FileNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+PS C:\WINDOWS\system32> Add-Content -Path $f -Value "Revision: budget increased, new target date added"
+PS C:\WINDOWS\system32> Show-Hash
+out-file : Could not find file 'C:\Users\DynastyX-koko\Documents\Lab05_FIM_events.txt'.
+At line:2 char:3
++   "   SHA256={0}  size={1} bytes" -f (Get-FileHash $f -Algorithm SHA2 ...
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [out-file], FileNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+PS C:\WINDOWS\system32> Start-Sleep -Seconds 45
+PS C:\WINDOWS\system32>
+PS C:\WINDOWS\system32> Mark "3 DELETE"
+out-file : Could not find file 'C:\Users\DynastyX-koko\Documents\Lab05_FIM_events.txt'.
+At line:3 char:3
++   "{0} | local {1} | UTC {2}" -f $step, $n.ToString("yyyy-MM-dd HH:mm ...
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [out-file], FileNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+PS C:\WINDOWS\system32> Remove-Item -Path $f
+PS C:\WINDOWS\system32> "   file still exists: $(Test-Path $f)" | Tee-Object -FilePath $log -Append
+out-file : Could not find file 'C:\Users\DynastyX-koko\Documents\Lab05_FIM_events.txt'.
+At line:1 char:26
++ "   file still exists: $(Test-Path $f)" | Tee-Object -FilePath $log - ...
++                          ~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [out-file], FileNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+PS C:\WINDOWS\system32> Get-Content "$env:USERPROFILE\Documents\Lab05_FIM_events.txt"
+Get-Content : Cannot find path 'C:\Users\DynastyX-koko\Documents\Lab05_FIM_events.txt' because it does not exist.
+At line:1 char:1
++ Get-Content "$env:USERPROFILE\Documents\Lab05_FIM_events.txt"
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\Dynast..._FIM_events.txt:String) [Get-Content], ItemNotFoundEx
+   ception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+
+PS C:\WINDOWS\system32> Select-String -Path "C:\Program Files (x86)\ossec-agent\ossec.log" -Pattern "syscheck|sensitivefiles|ERROR" | Select-Object -Last 10
+
+C:\Program Files (x86)\ossec-agent\ossec.log:225:2026/10/19 08:45:43 wazuh-agent: INFO: (6003): Monitoring path:
+'c:\users\dynastyx-koko\sensitivefiles', with options 'size | permissions | owner | group | mtime | inode | hash_md5 |
+hash_sha1 | hash_sha256 | attributes | report_changes | realtime'.
+
+
+PS C:\WINDOWS\system32>

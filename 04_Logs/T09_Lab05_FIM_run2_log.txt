@@ -1,0 +1,10 @@
+# Rebuilt from console text pasted by the analyst into the working chat (not a file copy). Only change: markers in [square brackets].
+# Times: Windows host clock is UTC-7; Wazuh manager and VM use UTC.
+# Content of C:\Users\DynastyX-koko\Lab05_Evidence\Lab05_FIM_run2.txt, printed with Get-Content after the run.
+
+1 CREATE | local 2026-10-19 08:58:10 | UTC 2026-10-19 15:58:10
+   SHA256=482BC551AFE2DB96869B81591BA670607A158636D4211A8E0B8DCD34DE6C1A5D  size=31 bytes
+2 MODIFY | local 2026-10-19 08:58:55 | UTC 2026-10-19 15:58:55
+   SHA256=EADB58EBA2E7FF70A59FD9521CB523222B5F614BC7C6BD834A2BBFB99A13085C  size=82 bytes
+3 DELETE | local 2026-10-19 08:59:40 | UTC 2026-10-19 15:59:40
+   file still exists: False

@@ -1,0 +1,14 @@
+# Rebuilt from console text pasted by the analyst into the working chat (not a file copy). Only change: markers in [square brackets].
+# Times: Windows host clock is UTC-7; Wazuh manager and VM use UTC.
+# On the Wazuh manager VM, 2026-10-19. The manager keeps its own plain-text copy of each alert in /var/ossec/logs/alerts/alerts.log.
+# (The first sudo password attempt was mistyped and repeated; the pasted text also contains remnants of a retyped command line.)
+
+icdfa-server@icdfa-server:~$ sudo grep -E "Rule: (550|553|554) " /var/ossec/logs/alerts/alerts.log | tail -n 8
+Rule: 554 (level 5) -> 'File added to the system.'
+Rule: 550 (level 7) -> 'Integrity checksum changed.'
+Rule: 553 (level 7) -> 'File deleted.'
+Rule: 554 (level 5) -> 'File added to the system.'
+Rule: 550 (level 7) -> 'Integrity checksum changed.'
+Rule: 553 (level 7) -> 'File deleted.'
+
+# Two complete add, modify, delete sequences (run 1 and run 2), in the same order as the actions.

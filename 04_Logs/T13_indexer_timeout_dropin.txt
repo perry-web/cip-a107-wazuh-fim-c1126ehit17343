@@ -1,0 +1,12 @@
+# Rebuilt from console text pasted by the analyst into the working chat (not a file copy). Only change: markers in [square brackets].
+# Times: Windows host clock is UTC-7; Wazuh manager and VM use UTC.
+# On the Wazuh manager VM, 2026-10-19 (after the earlier mistyped attempt, see exhibit E31)
+
+icdfa-server@icdfa-server:~$ sudo mkdir -p /etc/systemd/system/wazuh-indexer.service.d
+icdfa-server@icdfa-server:~$ printf '[Service]\nTimeoutStartSec=900\n' | sudo tee /etc/systemd/system/wazuh-indexer.service.d/timeout.conf
+[Service]
+TimeoutStartSec=900
+icdfa-server@icdfa-server:~$ sudo systemctl daemon-reload
+icdfa-server@icdfa-server:~$ cat /etc/systemd/system/wazuh-indexer.service.d/timeout.conf
+[Service]
+TimeoutStartSec=900

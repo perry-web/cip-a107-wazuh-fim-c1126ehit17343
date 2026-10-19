@@ -1,0 +1,36 @@
+# Rebuilt from console text pasted by the analyst into the working chat (not a file copy). Only change: markers in [square brackets].
+# Times: Windows host clock is UTC-7; Wazuh manager and VM use UTC.
+# Windows host, Administrator PowerShell, 2026-10-19 (host clock UTC-7)
+
+PS C:\WINDOWS\system32> Start-BitsTransfer -Source "https://packages.wazuh.com/4.x/windows/wazuh-agent-4.12.0-1.msi" -Destination "$env:USERPROFILE\Downloads\wazuh-agent-4.12.0-1.msi"
+PS C:\WINDOWS\system32> Get-Item "$env:USERPROFILE\Downloads\wazuh-agent-4.12.0-1.msi" | Select-Object Name, Length
+
+Name                      Length
+----                      ------
+wazuh-agent-4.12.0-1.msi 5406720
+
+PS C:\WINDOWS\system32> msiexec /i "$env:USERPROFILE\Downloads\wazuh-agent-4.12.0-1.msi" /q
+
+# Wazuh Agent Manager (GUI): Manager IP 192.168.119.128 and the authentication key entered, then Save (see exhibit E42).
+
+PS C:\WINDOWS\system32> Start-Service WazuhSvc
+PS C:\WINDOWS\system32> Get-Service WazuhSvc
+
+Status   Name               DisplayName
+------   ----               -----------
+Running  WazuhSvc           Wazuh
+
+PS C:\WINDOWS\system32> Test-NetConnection 192.168.119.128 -Port 1514
+
+ComputerName     : 192.168.119.128
+RemoteAddress    : 192.168.119.128
+RemotePort       : 1514
+InterfaceAlias   : VMware Network Adapter VMnet8
+SourceAddress    : 192.168.119.1
+TcpTestSucceeded : True
+
+PS C:\WINDOWS\system32> Start-Sleep -Seconds 20
+PS C:\WINDOWS\system32> Select-String -Path "C:\Program Files (x86)\ossec-agent\ossec.log" -Pattern "Connected to the server|ERROR" | Select-Object -Last 5
+
+C:\Program Files (x86)\ossec-agent\ossec.log:77:2026/10/19 08:34:16 wazuh-agent: INFO: (4102): Connected to the server ([192.168.119.128]:1514/tcp).
+C:\Program Files (x86)\ossec-agent\ossec.log:167:2026/10/19 08:34:24 wazuh-agent: INFO: (4102): Connected to the server ([192.168.119.128]:1514/tcp).

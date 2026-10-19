@@ -1,0 +1,22 @@
+# Rebuilt from console text pasted by the analyst into the working chat (not a file copy). Only change: markers in [square brackets].
+# Times: Windows host clock is UTC-7; Wazuh manager and VM use UTC.
+# Run 2 (the logging-corrected run). Windows host, Administrator PowerShell, 2026-10-19 (host clock UTC-7).
+# The function definitions are shown in the report (section 7). Output:
+
+PS C:\WINDOWS\system32> Mark "1 CREATE"
+1 CREATE | local 2026-10-19 08:58:10 | UTC 2026-10-19 15:58:10
+PS C:\WINDOWS\system32> Set-Content -Path $f -Value "CONFIDENTIAL: Project plan v1"
+PS C:\WINDOWS\system32> Show-Hash
+   SHA256=482BC551AFE2DB96869B81591BA670607A158636D4211A8E0B8DCD34DE6C1A5D  size=31 bytes
+PS C:\WINDOWS\system32> Start-Sleep -Seconds 45
+PS C:\WINDOWS\system32> Mark "2 MODIFY"
+2 MODIFY | local 2026-10-19 08:58:55 | UTC 2026-10-19 15:58:55
+PS C:\WINDOWS\system32> Add-Content -Path $f -Value "Revision: budget increased, new target date added"
+PS C:\WINDOWS\system32> Show-Hash
+   SHA256=EADB58EBA2E7FF70A59FD9521CB523222B5F614BC7C6BD834A2BBFB99A13085C  size=82 bytes
+PS C:\WINDOWS\system32> Start-Sleep -Seconds 45
+PS C:\WINDOWS\system32> Mark "3 DELETE"
+3 DELETE | local 2026-10-19 08:59:40 | UTC 2026-10-19 15:59:40
+PS C:\WINDOWS\system32> Remove-Item -Path $f
+PS C:\WINDOWS\system32> "   file still exists: $(Test-Path $f)" | Tee-Object -FilePath $log -Append
+   file still exists: False

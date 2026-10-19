@@ -1,0 +1,12 @@
+Evidence log, CIP-A107 SOC Lab, Perry Koko C1126EHIT17343
+Times: VM and Wazuh UTC; Windows host UTC-7.
+2026-10-15  Installer run 1 (14:09:26 to 14:43:35): failed, dashboard not initialised. VM 4.3 GiB RAM.
+2026-10-18  Resources raised (8.6 GB RAM, 4 vCPU, 50 GB disk, 8 GiB swap); snapshot Wazuh_Clean_Baseline 19:07:29.
+2026-10-18  Run 2 19:19:22 GPG key error; run 3 19:29:08 to 20:03:37 indexer failed; run 4 20:41:06 to 22:03:20 Filebeat failed.
+2026-10-18  Packages pre-downloaded (185 MB); run 5 22:32:46 to 22:48:01 finished.
+2026-10-18  Indexer start timeout 23:01:57; manual start; drop-in TimeoutStartSec=900.
+2026-10-18  VMnet8 repaired; VM 192.168.119.128; host 192.168.119.1; dashboard reachable.
+2026-10-19  15:24 agent 001 created; 15:34:16 agent connected; 15:34:55 real-time FIM started (08:34:55 local).
+2026-10-19  FIM line added to ossec.conf; service restarted; path monitored from 15:45:43 UTC.
+2026-10-19  Run 1 15:50:33 / 15:51:19 / 15:52:04; run 2 15:58:10 / 15:58:55 / 15:59:40 (alerts 0.34 to 0.44 s later).
+Detailed times and sources: 03_Evidence_Manifest/evidence_manifest.csv

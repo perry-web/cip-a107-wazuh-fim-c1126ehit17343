@@ -1,0 +1,57 @@
+# Rebuilt from console text pasted by the analyst into the working chat (not a file copy). Only change: markers in [square brackets].
+# Times: Windows host clock is UTC-7; Wazuh manager and VM use UTC.
+# Session on the Wazuh manager VM (icdfa-server), 2026/10/19 15:25 UTC. The agent key printed by option E is replaced by a marker.
+
+icdfa-server@icdfa-server:~$ sudo /var/ossec/bin/manage_agents
+
+****************************************
+* Wazuh v4.12.0 Agent manager.         *
+* The following options are available: *
+****************************************
+   (A)dd an agent (A).
+   (E)xtract key for an agent (E).
+   (L)ist already added agents (L).
+   (R)emove an agent (R).
+   (Q)uit.
+Choose your action: A,E,L,R or Q: A
+
+- Adding a new agent (use '\q' to return to the main menu).
+  Please provide the following:
+   * A name for the new agent: Windows-SOC-Lab
+   * The IP Address of the new agent: any
+Confirm adding it?(y/n): y
+Agent added with ID 001.
+
+Choose your action: A,E,L,R or Q: A
+
+- Adding a new agent (use '\q' to return to the main menu).
+  Please provide the following:
+   * A name for the new agent: Windows-SOC-Lab
+   * The IP Address of the new agent: 001
+
+** Invalid IP '001'. Please enter a valid IP Address.
+
+   * The IP Address of the new agent: any
+Confirm adding it?(y/n): y
+2026/10/19 15:25:23 manage_agents: WARNING: 9008: Duplicate name
+
+Choose your action: A,E,L,R or Q: e
+
+Available agents:
+   ID: 001, Name: Windows-SOC-Lab, IP: any
+Provide the ID of the agent to extract the key (or '\q' to quit): 001
+
+Agent key information for '001' is:
+[AGENT KEY REMOVED FROM THIS EXPORT]
+
+** Press ENTER to return to the main menu.
+
+Choose your action: A,E,L,R or Q: q
+
+manage_agents: Exiting.
+icdfa-server@icdfa-server:~$ sudo /var/ossec/bin/manage_agents -l
+
+Available agents:
+   ID: 001, Name: Windows-SOC-Lab, IP: any
+
+# Note: the second "A" was a repeated attempt; the prompt that appeared asked for an IP address, so "001" was rejected, and Wazuh refused the duplicate name. Agent 001 from the first attempt is the only agent.

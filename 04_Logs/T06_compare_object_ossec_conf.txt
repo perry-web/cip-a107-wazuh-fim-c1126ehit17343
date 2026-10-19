@@ -1,0 +1,10 @@
+# Rebuilt from console text pasted by the analyst into the working chat (not a file copy). Only change: markers in [square brackets].
+# Times: Windows host clock is UTC-7; Wazuh manager and VM use UTC.
+PS C:\WINDOWS\system32> $conf = "C:\Program Files (x86)\ossec-agent\ossec.conf"
+PS C:\WINDOWS\system32> Compare-Object (Get-Content "$conf.bak") (Get-Content $conf)
+
+InputObject
+-----------
+    <directories realtime="yes" check_all="yes" report_changes="yes">C:\Users\DynastyX-koko\SensitiveFiles</director...
+
+# Exactly one line differs between the backup and the edited file. (The console cut the line at its right edge; the full line is in T05.)
